@@ -1,0 +1,36 @@
+<div ng-cloak layout-gt-sm="row" layout="column">
+
+  <div flex>
+
+    <md-toolbar layout="row" class="md-hue-3">
+      <div class="md-toolbar-tools">
+        <span>Transactions</span>
+      </div>
+    </md-toolbar>
+    <div>
+      <form ng-submit="submit()"  ng-cloak>
+        <p>Order by <span class="radioValue">{{ order.type}}</span> </p>
+
+        <md-radio-group ng-model="order.type">
+          <md-radio-button value="date" class="md-primary">Date</md-radio-button>
+          <md-radio-button value="name" class="md-primary"> Name </md-radio-button>
+          <md-radio-button value="amount" class="md-primary">Amount</md-radio-button>
+        </md-radio-group>
+      </form>
+
+    <md-content>
+      <md-list flex>
+        <md-list-item class="md-2-line" ng-repeat="trans in listTransactions | orderBy: order.type">
+          <div class="md-list-item-text md-offset">
+            <h3> {{ trans.name }} </h3>
+            <p> {{ trans.date | date }}, {{trans.meta.location.city}} </p>
+            <p class="md-secondary">${{trans.amount}}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+
+  <md-divider></md-divider>
+
+</div>

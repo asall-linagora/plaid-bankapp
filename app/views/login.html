@@ -1,0 +1,60 @@
+<form class="form-horizontal loginform" name="login_form"
+      x-ng-submit="login.submit()">
+  <fieldset>
+    <legend class="modal-header">
+      Sign in
+    </legend>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+
+        <div class="col-sm-8">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Username"
+                 name="username"
+                 x-ng-model="login.credentials.username"
+                 id="inputUsername"
+                 required/>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="inputPassword"
+               class="col-sm-2 control-label">Password
+        </label>
+
+        <div class="col-sm-8">
+          <input type="password"
+                 class="form-control"
+                 id="inputPassword"
+                 placeholder="Password"
+                 x-ng-model="login.credentials.password"
+                 name="password" required/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputBank"
+               class="col-sm-2 control-label">Bank
+        </label>
+        <div class="col-sm-8">
+          <select id="inputBank" ng-model="login.selectedBank" required>
+            <option ng-repeat="(type, bankname)  in login.bankList" ng-value="type">
+              {{bankname}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit"
+                  class="btn btn-primary">Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
